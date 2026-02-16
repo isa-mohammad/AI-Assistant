@@ -536,7 +536,34 @@ export default function HomePage() {
       {/* Header */}
       
         
-          AI Assistant
+         # AI Assistant App - Deployment & Configuration
+
+## 🚀 Deployment Checklist
+
+### 1. Supabase Dashboard Configuration
+To ensure authentication works in production, you **must** update these settings in your [Supabase Dashboard](https://supabase.com/dashboard):
+
+1.  Go to **Authentication** > **URL Configuration**.
+2.  **Site URL**: Change `http://localhost:3000` to your production URL (e.g., `https://my-ai-app.vercel.app`).
+3.  **Redirect URLs**: Add `https://my-ai-app.vercel.app/auth/callback`.
+
+### 2. Google OAuth Configuration
+If you are using Google Login:
+1.  Go to the [Google Cloud Console](https://console.cloud.google.com/).
+2.  Navigate to **APIs & Services** > **Credentials**.
+3.  Edit your **OAuth 2.0 Client ID**.
+4.  Under **Authorized redirect URIs**, add the callback URL provided by Supabase (found in **Authentication** > **Providers** > **Google**). It looks like: `https://krzzztklfrihvrdhpkeh.supabase.co/auth/v1/callback`.
+
+### 3. Environment Variables
+Add these to your production environment (e.g., Vercel / Netlify):
+- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase Project URL.
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase Anon Key.
+- `NEXT_PUBLIC_APP_URL`: Your full production URL (e.g., `https://my-ai-app.vercel.app`).
+- `GEMINI_API_KEY`: Your Google Gemini API Key.
+
+---
+
+# Original Project Notes
           
             {user && (
               <>
